@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Navidad Familia Torres 🎄</title>
+    <meta name="description" content="Navidad Familia Torres. Domingo 20 de diciembre, 3:00 p. m., El Agustino.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#1E4A36">
+
+    <!-- Vista previa del link en WhatsApp (Open Graph). __SITE_URL__ lo reemplaza el pipeline -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:title" content="Navidad Familia Torres 🎄 ¡Te invitamos!">
+    <meta property="og:description" content="Domingo 20 de diciembre · 3:00 p. m. · El Agustino. Abre tu invitación y confirma tu asistencia.">
+    <meta property="og:url" content="__SITE_URL__/">
+    <meta property="og:image" content="__SITE_URL__/preview.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Invitación: Navidad Familia Torres, domingo 20 de diciembre a las 3:00 p. m.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Nunito:wght@400;600;700;800&display=swap">
+
+    <style>
+        :root {
+            --verde-noche: #133524;
+            --verde: #1E4A36;
+            --verde-claro: #2F6A4E;
+            --rojo: #A3202D;
+            --rojo-hover: #861A24;
+            --dorado: #D4AF5C;
+            --dorado-osc: #8A6A24;
+            --crema: #FCF6EC;
+            --crema-2: #F4E9D6;
+            --menta: #E6F0E8;
+            --rosa: #F7E5E2;
+            --tinta: #2A211C;
+            --tinta-suave: #6B5E55;
+            --borde: rgba(42, 33, 28, .15);
+            --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+            --sans: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        html { background: var(--verde-noche); -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            min-height: 100dvh;
+            font-family: var(--sans);
+            color: var(--tinta);
+            background: radial-gradient(130% 70% at 50% 0%, #255E44 0%, var(--verde-noche) 62%, #0D2619 100%);
+            padding: max(16px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+        }
+
+        /* ---------- Nieve ---------- */
+        .nieve { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+        .copo {
+            position: absolute; top: -12px; border-radius: 50%; background: #fff;
+            animation: caer linear infinite; will-change: transform;
+        }
+        @keyframes caer { to { transform: translate3d(var(--deriva), 105vh, 0); } }
+
+        /* ---------- Tarjeta ---------- */
+        .tarjeta {
+            position: relative; z-index: 1;
+            width: 100%; max-width: 440px; margin: 0 auto;
+            background: var(--crema);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,.6), 0 10px 24px -12px rgba(0,0,0,.4);
+        }
+
+        /* ---------- Encabezado ---------- */
+        .hero {
+            position: relative;
+            text-align: center;
+            color: var(--crema);
+            padding: 76px 24px 54px;
+            background:
+                    radial-gradient(1.5px 1.5px at 12% 40%, rgba(255,255,255,.55), transparent 60%),
+                    radial-gradient(1px 1px at 28% 72%, rgba(255,255,255,.45), transparent 60%),
+                    radial-gradient(1.5px 1.5px at 78% 36%, rgba(255,255,255,.5), transparent 60%),
+                    radial-gradient(1px 1px at 88% 70%, rgba(255,255,255,.4), transparent 60%),
+                    radial-gradient(1px 1px at 60% 84%, rgba(255,255,255,.35), transparent 60%),
+                    radial-gradient(110% 120% at 50% 0%, var(--verde-claro) 0%, var(--verde) 55%, #173D2C 100%);
+        }
+        .guirnalda { position: absolute; top: 0; left: 0; width: 100%; height: 70px; overflow: visible; }
+        .foco { animation: titilar 2.4s ease-in-out infinite; }
+        @keyframes titilar { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+        .hero-titulo {
+            margin: 0;
+            font-family: var(--serif); font-weight: 600;
+            /* "Familia Torres" siempre en una sola línea: el tamaño se ajusta al ancho de la pantalla */
+            font-size: min(calc((100vw - 80px) / 6.4), 54px); line-height: 1.05; letter-spacing: -.01em;
+        }
+        .hero-titulo span { display: block; color: var(--dorado); white-space: nowrap; }
+        .acebo { display: block; width: 60px; height: 30px; margin: 16px auto 0; }
+        .hero-onda { position: absolute; left: 0; bottom: -1px; width: 100%; height: 22px; display: block; }
+
+        /* ---------- Contenido ---------- */
+        .contenido { padding: 26px 22px 8px; }
+        .vista { animation: entrar .35s ease both; }
+        @keyframes entrar { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        .vista:focus { outline: none; }
+        h2:focus, .saludo:focus { outline: none; }
+
+        .saludo {
+            margin: 0 0 8px;
+            font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.15;
+        }
+        .texto { margin: 0 0 22px; font-size: 16.5px; line-height: 1.55; color: var(--tinta-suave); }
+
+        /* Ficha del evento */
+        .ficha { margin: 0; padding: 2px 16px; background: var(--crema-2); border-radius: 16px; }
+        .fila { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1.5px dashed var(--borde); }
+        .fila:last-child { border-bottom: 0; }
+        .fila svg { flex: none; width: 22px; height: 22px; margin-top: 1px; color: var(--rojo); }
+        .fila dt { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-suave); }
+        .fila dd { margin: 2px 0 0; font-size: 16.5px; font-weight: 700; line-height: 1.35; }
+        .mapa {
+            display: inline-flex; align-items: center; gap: 4px; margin-top: 6px;
+            font-size: 14.5px; font-weight: 800; color: var(--rojo);
+            text-decoration: underline; text-underline-offset: 3px;
+        }
+
+        /* Avisos */
+        .aviso {
+            display: flex; gap: 10px; align-items: flex-start;
+            margin: 18px 0 0; padding: 12px 14px; border-radius: 14px;
+            font-size: 15px; font-weight: 700; line-height: 1.4;
+            background: var(--menta); color: var(--verde);
+        }
+        .aviso.no { background: var(--rosa); color: #7E1A22; }
+        .aviso small { display: block; font-weight: 600; opacity: .85; margin-top: 2px; }
+        .aviso svg { flex: none; width: 20px; height: 20px; margin-top: 1px; }
+        .alerta {
+            margin: 14px 0 0; padding: 12px 14px; border-radius: 12px;
+            background: var(--rosa); color: #7E1A22; font-size: 15px; font-weight: 700; line-height: 1.4;
+        }
+
+        /* Botones */
+        .acciones { display: grid; gap: 10px; margin-top: 22px; }
+        .btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; min-height: 54px; padding: 14px 20px;
+            border: 0; border-radius: 999px; cursor: pointer;
+            font: 800 17px/1.2 var(--sans); text-decoration: none; text-align: center;
+            transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn:active { transform: scale(.98); }
+        .btn[disabled] { opacity: .7; cursor: progress; }
+        .btn svg { width: 20px; height: 20px; flex: none; }
+        .btn-primario { background: var(--rojo); color: #fff; box-shadow: 0 10px 20px -10px rgba(163,32,45,.8); }
+        .btn-primario:hover { background: var(--rojo-hover); }
+        .btn-secundario { background: transparent; color: var(--tinta-suave); border: 1.5px solid var(--borde); }
+        .btn-secundario:hover { background: rgba(42,33,28,.04); }
+        .btn-dorado { background: transparent; color: var(--dorado-osc); border: 1.5px solid var(--dorado); }
+        .btn-dorado:hover { background: rgba(212,175,92,.12); }
+        .enlace {
+            display: inline-block; padding: 10px 4px; border: 0; background: none; cursor: pointer;
+            font: 800 15px/1.2 var(--sans); color: var(--rojo);
+            text-decoration: underline; text-underline-offset: 3px;
+        }
+        .volver { padding-top: 0; color: var(--tinta-suave); text-decoration: none; }
+        .centro { text-align: center; }
+        :focus-visible { outline: 3px solid var(--dorado); outline-offset: 3px; }
+
+        /* Formulario */
+        .titulo-vista { margin: 6px 0 6px; font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.15; }
+        .campo-fila {
+            display: flex; align-items: center; justify-content: space-between; gap: 14px;
+            padding: 16px 0; border-bottom: 1.5px dashed var(--borde);
+        }
+        .etiqueta { display: block; font-size: 16.5px; font-weight: 800; line-height: 1.3; }
+        .ayuda { display: block; margin-top: 2px; font-size: 14px; color: var(--tinta-suave); }
+        .contador { display: flex; align-items: center; gap: 4px; padding: 5px; flex: none; background: var(--crema-2); border-radius: 999px; }
+        .contador button {
+            width: 42px; height: 42px; border: 0; border-radius: 50%; cursor: pointer;
+            background: #fff; color: var(--rojo);
+            font: 800 24px/1 var(--sans);
+            box-shadow: 0 1px 3px rgba(0,0,0,.15);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .contador button:disabled { opacity: .35; cursor: default; box-shadow: none; }
+        .contador output { min-width: 2.2ch; text-align: center; font-family: var(--serif); font-size: 26px; font-weight: 600; }
+        .campo-aporte { padding: 18px 0 4px; }
+        .campo-aporte label { margin-bottom: 10px; }
+        textarea {
+            display: block; width: 100%; min-height: 112px; resize: vertical;
+            padding: 14px; border: 1.5px solid var(--borde); border-radius: 14px;
+            background: #fff; color: var(--tinta);
+            font: 16px/1.5 var(--sans);
+        }
+        textarea::placeholder { color: #9A8D83; }
+        textarea:focus { outline: none; border-color: var(--dorado); box-shadow: 0 0 0 4px rgba(212,175,92,.28); }
+        .caracteres { margin-top: 4px; text-align: right; font-size: 12.5px; color: var(--tinta-suave); }
+        .resumen {
+            display: flex; gap: 10px; align-items: center;
+            margin: 12px 0 0; padding: 12px 14px; border-radius: 14px;
+            background: var(--menta); color: var(--verde); font-size: 15px; font-weight: 700; line-height: 1.4;
+        }
+        .resumen svg { flex: none; width: 20px; height: 20px; }
+
+        /* Gracias / declinado */
+        .esfera { display: block; width: 92px; height: 116px; margin: 0 auto 6px; transform-origin: 50% 0; animation: mecer 3.2s ease-in-out infinite; }
+        @keyframes mecer { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+        .grande { margin: 0 0 8px; text-align: center; font-family: var(--serif); font-weight: 600; font-size: 42px; line-height: 1.05; color: var(--rojo); }
+        .estrella { display: block; width: 64px; height: 64px; margin: 4px auto 10px; color: var(--dorado); }
+
+        /* Cargando / error */
+        .estado-centro { padding: 28px 0 20px; text-align: center; }
+        .spinner {
+            width: 44px; height: 44px; margin: 0 auto 16px; border-radius: 50%;
+            border: 4px solid var(--crema-2); border-top-color: var(--rojo);
+            animation: girar .9s linear infinite;
+        }
+        @keyframes girar { to { transform: rotate(360deg); } }
+
+        .pie { padding: 18px 22px 24px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--dorado-osc); }
+
+        [hidden] { display: none !important; }
+
+        /* Laptop / tablet: la tarjeta respira y queda centrada */
+        @media (min-width: 600px) {
+            body { padding: 56px 24px 72px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .copo { display: none; }
+            .foco, .esfera, .vista, .spinner { animation: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="nieve" aria-hidden="true"></div>
+
+<main class="tarjeta">
+    <header class="hero">
+        <svg class="guirnalda" viewBox="0 0 400 70" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+            <path id="cable" d="M-20 4 C 50 44, 130 46, 200 20 S 330 -4, 420 30" fill="none" stroke="#0C2519" stroke-width="2"/>
+            <g id="focos"></g>
+        </svg>
+        <h1 class="hero-titulo">Navidad <span>Familia Torres</span></h1>
+        <svg class="acebo" viewBox="0 0 64 32" aria-hidden="true">
+            <path d="M31 19 C 23 9, 10 7, 2 12 C 6 13, 7 17, 11 17 C 10 20, 13 22, 16 21 C 18 24, 24 23, 31 19 Z" fill="#3E8A5F"/>
+            <path d="M33 19 C 41 9, 54 7, 62 12 C 58 13, 57 17, 53 17 C 54 20, 51 22, 48 21 C 46 24, 40 23, 33 19 Z" fill="#2F7350"/>
+            <circle cx="28.5" cy="17" r="4.2" fill="#C8283A"/>
+            <circle cx="35.5" cy="17" r="4.2" fill="#B01F30"/>
+            <circle cx="32" cy="11.5" r="4.2" fill="#D63447"/>
+            <circle cx="30.8" cy="10.3" r="1.2" fill="#fff" opacity=".6"/>
+        </svg>
+        <svg class="hero-onda" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 22 L0 10 Q 25 0 50 10 T 100 10 T 150 10 T 200 10 T 250 10 T 300 10 T 350 10 T 400 10 L400 22 Z" fill="#FCF6EC"/>
+        </svg>
+    </header>
+
+    <div class="contenido">
+
+        <!-- Cargando -->
+        <section class="vista" data-vista="cargando" aria-live="polite">
+            <div class="estado-centro">
+                <div class="spinner" aria-hidden="true"></div>
+                <p class="texto" style="margin:0">Abriendo tu invitación…</p>
+            </div>
+        </section>
+
+        <!-- Error -->
+        <section class="vista" data-vista="error" hidden>
+            <div class="estado-centro">
+                <svg class="estrella" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z"/></svg>
+                <h2 class="titulo-vista" id="error-titulo" tabindex="-1"></h2>
+                <p class="texto" id="error-texto"></p>
+                <button class="btn btn-secundario" id="btn-reintentar" type="button" hidden>Intentar de nuevo</button>
+            </div>
+        </section>
+
+        <!-- 1. Invitación -->
+        <section class="vista" data-vista="invitacion" hidden>
+            <h2 class="saludo" tabindex="-1">¡Hola, <span data-nombre></span>!</h2>
+            <p class="texto">Este año queremos reunirnos para celebrar juntos la Navidad. Tu presencia es el mejor regalo: ¡nos encantaría que vengas!</p>
+
+            <dl class="ficha">
+                <div class="fila">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+                    <div><dt>Fecha</dt><dd>Domingo 20 de diciembre</dd></div>
+                </div>
+                <div class="fila">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    <div><dt>Hora</dt><dd>3:00 p. m.</dd></div>
+                </div>
+                <div class="fila">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                    <div>
+                        <dt>Lugar</dt>
+                        <dd>Av. Juan Fumagalli 209<br>El Agustino</dd>
+                        <a class="mapa" data-mapa href="#" target="_blank" rel="noopener">Cómo llegar →</a>
+                    </div>
+                </div>
+            </dl>
+
+            <div class="aviso" id="aviso-estado" role="status" hidden></div>
+            <p class="alerta" id="error-declinar" role="alert" hidden></p>
+
+            <div class="acciones">
+                <button class="btn btn-primario" id="btn-confirmar" type="button">Confirmar asistencia</button>
+                <button class="btn btn-secundario" id="btn-declinar" type="button">No podré asistir</button>
+            </div>
+        </section>
+
+        <!-- 2. Formulario -->
+        <section class="vista" data-vista="formulario" hidden>
+            <button class="enlace volver" type="button" data-volver>← Volver a la invitación</button>
+            <h2 class="titulo-vista" tabindex="-1">¡Qué alegría, <span data-nombre></span>! 🎉</h2>
+            <p class="texto" style="margin-bottom:8px">Cuéntanos un poco más para organizarnos mejor.</p>
+
+            <form id="formulario" novalidate>
+                <div class="campo-fila">
+                    <div>
+                        <span class="etiqueta" id="lbl-adultos">¿Cuántos adultos te acompañan?</span>
+                        <span class="ayuda">Sin contarte a ti</span>
+                    </div>
+                    <div class="contador" role="group" aria-labelledby="lbl-adultos">
+                        <button type="button" data-campo="adultos" data-paso="-1" aria-label="Quitar un adulto">−</button>
+                        <output id="adultos" aria-live="polite">0</output>
+                        <button type="button" data-campo="adultos" data-paso="1" aria-label="Agregar un adulto">+</button>
+                    </div>
+                </div>
+
+                <div class="campo-fila">
+                    <div>
+                        <span class="etiqueta" id="lbl-ninos">¿Cuántos niños te acompañan?</span>
+                    </div>
+                    <div class="contador" role="group" aria-labelledby="lbl-ninos">
+                        <button type="button" data-campo="ninos" data-paso="-1" aria-label="Quitar un niño">−</button>
+                        <output id="ninos" aria-live="polite">0</output>
+                        <button type="button" data-campo="ninos" data-paso="1" aria-label="Agregar un niño">+</button>
+                    </div>
+                </div>
+
+                <div class="campo-aporte">
+                    <label class="etiqueta" for="aporte">Si quieres sumar algo a la mesa navideña, cuéntanos qué traerás</label>
+                    <textarea id="aporte" maxlength="500" rows="4" placeholder="Ej.: bocaditos, caramelos para los niños, panetón, gaseosas…"></textarea>
+                    <div class="caracteres"><span id="caracteres">0</span>/500 · opcional</div>
+                </div>
+
+                <p class="resumen" id="resumen-form">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></svg>
+                    <span></span>
+                </p>
+                <p class="alerta" id="error-envio" role="alert" hidden></p>
+
+                <div class="acciones">
+                    <button class="btn btn-primario" id="btn-enviar" type="submit">Enviar confirmación</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 3a. Gracias -->
+        <section class="vista" data-vista="gracias" hidden>
+            <svg class="esfera" viewBox="0 0 100 126" aria-hidden="true">
+                <line x1="50" y1="0" x2="50" y2="18" stroke="#8A6A24" stroke-width="2"/>
+                <rect x="39" y="16" width="22" height="13" rx="3" fill="#D4AF5C"/>
+                <circle cx="50" cy="74" r="44" fill="#A3202D"/>
+                <path d="M8 64 Q50 82 92 64" stroke="#D4AF5C" stroke-width="5" fill="none"/>
+                <path d="M10 88 Q50 106 90 88" stroke="#D4AF5C" stroke-width="3" fill="none" opacity=".8"/>
+                <ellipse cx="33" cy="54" rx="9" ry="15" fill="#fff" opacity=".22" transform="rotate(28 33 54)"/>
+            </svg>
+            <h2 class="grande" tabindex="-1">¡Te esperamos!</h2>
+            <p class="texto centro">Gracias por confirmar, <span data-nombre></span>. Ya quedó todo anotado.</p>
+
+            <dl class="ficha">
+                <div class="fila">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+                    <div><dt>Cuándo</dt><dd>Domingo 20 de diciembre · 3:00 p. m.</dd></div>
+                </div>
+                <div class="fila">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></svg>
+                    <div><dt>Vienen</dt><dd id="gracias-asistentes"></dd></div>
+                </div>
+                <div class="fila" id="gracias-fila-aporte">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12M12 9c-2-4-7-4-6-1s6 1 6 1zM12 9c2-4 7-4 6-1s-6 1-6 1z"/></svg>
+                    <div><dt>Traerás</dt><dd id="gracias-aporte"></dd></div>
+                </div>
+            </dl>
+
+            <div class="acciones">
+                <a class="btn btn-primario" data-mapa href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                    Cómo llegar
+                </a>
+                <a class="btn btn-dorado" id="btn-calendario" href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M12 13v5M9.5 15.5h5"/></svg>
+                    Agregar a mi calendario
+                </a>
+            </div>
+            <p class="centro"><button class="enlace" type="button" data-cambiar>Cambiar mi respuesta</button></p>
+        </section>
+
+        <!-- 3b. No asiste -->
+        <section class="vista" data-vista="declinado" hidden>
+            <svg class="estrella" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z"/></svg>
+            <h2 class="grande" tabindex="-1">Te vamos a extrañar</h2>
+            <p class="texto centro">Gracias por avisarnos, <span data-nombre></span>. Te mandamos un abrazo grande y te deseamos una muy feliz Navidad.</p>
+            <div class="acciones">
+                <button class="btn btn-secundario" type="button" id="btn-reconsiderar">¿Cambiaste de planes? Confirmar asistencia</button>
+            </div>
+        </section>
+    </div>
+
+    <footer class="pie">¡Feliz Navidad! ✨</footer>
+</main>
+
+<script>
+    (() => {
+        'use strict';
+
+        // ---------- Configuración ----------
+        // __APPS_SCRIPT_URL__ lo reemplaza el pipeline con la URL /exec de Apps Script
+        const API_URL = '__APPS_SCRIPT_URL__';
+        const MAX_PERSONAS = 10;
+        const EVENTO = {
+            titulo: 'Navidad Familia Torres 🎄',
+            details: 'Navidad Familia Torres.',
+            inicio: '20261220T150000',
+            fin: '20261220T210000',
+            zona: 'America/Lima',
+            lugar: 'Av. Juan Fumagalli 209, El Agustino, Lima, Perú',
+        };
+        const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(EVENTO.lugar);
+
+        // ---------- Estado ----------
+        const token = new URLSearchParams(location.search).get('t');
+        const estado = { nombre: '', respuesta: '', adultos: 0, ninos: 0, aporte: '' };
+        const VISTAS_NAVEGABLES = ['invitacion', 'formulario', 'gracias', 'declinado'];
+        let datosCargados = false;
+
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => document.querySelectorAll(sel);
+
+        // ---------- Decoración ----------
+        function crearNieve() {
+            if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const cont = $('.nieve');
+            const copos = Math.min(90, Math.max(28, Math.round(innerWidth / 16))); // más copos en pantallas anchas
+            for (let i = 0; i < copos; i++) {
+                const c = document.createElement('span');
+                const tam = 2 + Math.random() * 4;
+                const dur = 9 + Math.random() * 10;
+                c.className = 'copo';
+                c.style.cssText =
+                    `left:${Math.random() * 100}%;width:${tam}px;height:${tam}px;opacity:${0.35 + Math.random() * 0.5};` +
+                    `animation-duration:${dur}s;animation-delay:${-Math.random() * dur}s;--deriva:${(Math.random() * 80 - 40).toFixed(0)}px`;
+                cont.appendChild(c);
+            }
+        }
+
+        function crearGuirnalda() {
+            const cable = $('#cable');
+            const grupo = $('#focos');
+            const ns = 'http://www.w3.org/2000/svg';
+            const colores = ['#E5384B', '#F2C14E', '#3FA36B', '#FFF4DC'];
+            const largo = cable.getTotalLength();
+            const total = 11;
+            for (let i = 0; i < total; i++) {
+                const p = cable.getPointAtLength(largo * (i + 0.5) / total);
+                const color = colores[i % colores.length];
+                const g = document.createElementNS(ns, 'g');
+                g.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${(i % 2 ? 6 : -6)})`);
+                g.innerHTML =
+                    `<rect x="-2.6" y="-1" width="5.2" height="5" rx="1" fill="#B9AE98"/>` +
+                    `<g class="foco" style="animation-delay:${(i * 0.37).toFixed(2)}s;filter:drop-shadow(0 0 4px ${color})">` +
+                    `<ellipse cx="0" cy="11" rx="5" ry="7.5" fill="${color}"/>` +
+                    `<ellipse cx="-1.6" cy="8.5" rx="1.3" ry="2.4" fill="#fff" opacity=".55"/></g>`;
+                grupo.appendChild(g);
+            }
+        }
+
+        // ---------- Navegación entre vistas ----------
+        function mostrar(vista, modo = 'push') {
+            $$('[data-vista]').forEach((s) => { s.hidden = s.dataset.vista !== vista; });
+            if (modo === 'push') history.pushState({ vista }, '', '#' + vista);
+            if (modo === 'replace') history.replaceState({ vista }, '', '#' + vista);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const foco = document.querySelector(`[data-vista="${vista}"] [tabindex="-1"]`);
+            if (foco) foco.focus({ preventScroll: true });
+        }
+
+        window.addEventListener('popstate', (e) => {
+            if (!datosCargados) return;
+            const v = e.state && e.state.vista;
+            mostrar(VISTAS_NAVEGABLES.includes(v) ? v : 'invitacion', 'none');
+        });
+
+        // ---------- Comunicación con Apps Script ----------
+        async function llamar(url, opciones = {}) {
+            const ctrl = new AbortController();
+            const temporizador = setTimeout(() => ctrl.abort(), 20000);
+            try {
+                const res = await fetch(url, { ...opciones, signal: ctrl.signal });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return await res.json();
+            } finally {
+                clearTimeout(temporizador);
+            }
+        }
+
+        async function enviar(datos) {
+            const r = await llamar(API_URL, {
+                method: 'POST',
+                // text/plain evita el preflight de CORS que Apps Script no responde
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ token, ...datos }),
+            });
+            if (!r.ok) throw new Error(r.error || 'No se pudo guardar');
+            return r;
+        }
+
+        function mensajeError(err) {
+            if (err && /no encontrada/i.test(err.message)) {
+                return 'No encontramos tu invitación. Abre el link exacto que te llegó por WhatsApp.';
+            }
+            return 'No pudimos guardar tu respuesta. Revisa tu conexión e inténtalo de nuevo.';
+        }
+
+        // ---------- Textos ----------
+        function textoAsistentes(a, n) {
+            const partes = [];
+            if (a) partes.push(`${a} ${a === 1 ? 'adulto' : 'adultos'}`);
+            if (n) partes.push(`${n} ${n === 1 ? 'niño' : 'niños'}`);
+            if (!partes.length) return 'Tú';
+            if (partes.length === 1) return `Tú y ${partes[0]}`;
+            return `Tú, ${partes[0]} y ${partes[1]}`;
+        }
+
+        function textoResumen(a, n) {
+            if (!a && !n) return 'Vendrás tú. ¡Te esperamos!';
+            return `En total serán ${1 + a + n}: ${textoAsistentes(a, n).replace(/^Tú/, 'tú')}.`;
+        }
+
+        // ---------- Pintar vistas ----------
+        function pintarNombre() {
+            $$('[data-nombre]').forEach((el) => { el.textContent = estado.nombre; });
+        }
+
+        function pintarInvitacion() {
+            const aviso = $('#aviso-estado');
+            const btnConfirmar = $('#btn-confirmar');
+            const btnDeclinar = $('#btn-declinar');
+            $('#error-declinar').hidden = true;
+            aviso.className = 'aviso';
+            aviso.textContent = '';
+
+            if (estado.respuesta === 'Sí') {
+                aviso.hidden = false;
+                aviso.innerHTML =
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div></div>';
+                const div = aviso.querySelector('div');
+                div.textContent = 'Ya confirmaste tu asistencia';
+                const small = document.createElement('small');
+                small.textContent = 'Vienen: ' + textoAsistentes(estado.adultos, estado.ninos).replace(/^Tú/, 'tú');
+                div.appendChild(small);
+                btnConfirmar.textContent = 'Modificar mi confirmación';
+                btnDeclinar.hidden = false;
+            } else if (estado.respuesta === 'No') {
+                aviso.hidden = false;
+                aviso.classList.add('no');
+                aviso.textContent = 'Nos contaste que no podrás venir. Si cambias de planes, confírmanos aquí.';
+                btnConfirmar.textContent = 'Confirmar asistencia';
+                btnDeclinar.hidden = true;
+            } else {
+                aviso.hidden = true;
+                btnConfirmar.textContent = 'Confirmar asistencia';
+                btnDeclinar.hidden = false;
+            }
+        }
+
+        const valores = { adultos: 0, ninos: 0 };
+
+        function pintarFormulario() {
+            $('#adultos').textContent = valores.adultos;
+            $('#ninos').textContent = valores.ninos;
+            $$('.contador button').forEach((b) => {
+                const v = valores[b.dataset.campo];
+                b.disabled = Number(b.dataset.paso) < 0 ? v <= 0 : v >= MAX_PERSONAS;
+            });
+            $('#resumen-form span').textContent = textoResumen(valores.adultos, valores.ninos);
+            $('#caracteres').textContent = $('#aporte').value.length;
+        }
+
+        function abrirFormulario() {
+            valores.adultos = estado.respuesta === 'Sí' ? estado.adultos : 0;
+            valores.ninos = estado.respuesta === 'Sí' ? estado.ninos : 0;
+            $('#aporte').value = estado.respuesta === 'Sí' ? estado.aporte : '';
+            $('#error-envio').hidden = true;
+            pintarFormulario();
+            mostrar('formulario');
+        }
+
+        function pintarGracias() {
+            $('#gracias-asistentes').textContent = textoAsistentes(estado.adultos, estado.ninos);
+            $('#gracias-fila-aporte').hidden = !estado.aporte;
+            $('#gracias-aporte').textContent = estado.aporte;
+        }
+
+        function urlCalendario() {
+            const p = new URLSearchParams({
+                action: 'TEMPLATE',
+                text: EVENTO.titulo,
+                dates: `${EVENTO.inicio}/${EVENTO.fin}`,
+                ctz: EVENTO.zona,
+                location: EVENTO.lugar,
+                details: 'Encuentro familiar de Navidad.',
+            });
+            return 'https://calendar.google.com/calendar/render?' + p.toString();
+        }
+
+        function mostrarError(tipo) {
+            const mensajes = {
+                'sin-token': ['Esta invitación es personal', 'Abre el link que te llegó por WhatsApp para ver tu invitación.', false],
+                'invalido': ['No encontramos tu invitación', 'Revisa que hayas abierto el link completo que te llegó por WhatsApp.', false],
+                'red': ['No pudimos abrir tu invitación', 'Revisa tu conexión a internet e inténtalo de nuevo.', true],
+                'config': ['Invitación en preparación', 'Falta configurar la conexión con la lista de invitados.', false],
+            };
+            const [titulo, texto, reintentar] = mensajes[tipo];
+            $('#error-titulo').textContent = titulo;
+            $('#error-texto').textContent = texto;
+            $('#btn-reintentar').hidden = !reintentar;
+            mostrar('error', 'none');
+        }
+
+        // ---------- Carga inicial ----------
+        async function cargar() {
+            mostrar('cargando', 'none');
+            if (!token) return mostrarError('sin-token');
+            if (API_URL.startsWith('__')) return mostrarError('config');
+            try {
+                const r = await llamar(`${API_URL}?t=${encodeURIComponent(token)}`);
+                if (!r.ok) return mostrarError('invalido');
+                estado.nombre = String(r.nombre || '').trim().split(/\s+/)[0] || 'familia';
+                estado.respuesta = r.estado === 'Sí' || r.estado === 'No' ? r.estado : '';
+                estado.adultos = Math.max(0, Number(r.adultos) || 0);
+                estado.ninos = Math.max(0, Number(r.ninos) || 0);
+                estado.aporte = String(r.aporte || '');
+                datosCargados = true;
+                pintarNombre();
+                pintarInvitacion();
+                history.replaceState({ vista: 'invitacion' }, '', location.pathname + location.search);
+                mostrar('invitacion', 'none');
+            } catch (e) {
+                mostrarError('red');
+            }
+        }
+
+        // ---------- Eventos ----------
+        $('#btn-confirmar').addEventListener('click', abrirFormulario);
+        $('#btn-reconsiderar').addEventListener('click', () => { pintarInvitacion(); abrirFormulario(); });
+        $('#btn-reintentar').addEventListener('click', cargar);
+        $$('[data-volver]').forEach((b) => b.addEventListener('click', () => history.back()));
+        $$('[data-cambiar]').forEach((b) => b.addEventListener('click', () => { pintarInvitacion(); mostrar('invitacion'); }));
+
+        $$('.contador button').forEach((b) => b.addEventListener('click', () => {
+            const campo = b.dataset.campo;
+            valores[campo] = Math.min(MAX_PERSONAS, Math.max(0, valores[campo] + Number(b.dataset.paso)));
+            pintarFormulario();
+        }));
+        $('#aporte').addEventListener('input', pintarFormulario);
+
+        $('#btn-declinar').addEventListener('click', async (e) => {
+            const btn = e.currentTarget;
+            const texto = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Enviando…';
+            $('#error-declinar').hidden = true;
+            try {
+                await enviar({ asiste: false });
+                Object.assign(estado, { respuesta: 'No', adultos: 0, ninos: 0, aporte: '' });
+                pintarInvitacion();
+                mostrar('declinado');
+            } catch (err) {
+                $('#error-declinar').textContent = mensajeError(err);
+                $('#error-declinar').hidden = false;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = texto;
+            }
+        });
+
+        $('#formulario').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = $('#btn-enviar');
+            const datos = { asiste: true, adultos: valores.adultos, ninos: valores.ninos, aporte: $('#aporte').value.trim() };
+            btn.disabled = true;
+            btn.textContent = 'Enviando…';
+            $('#error-envio').hidden = true;
+            try {
+                await enviar(datos);
+                Object.assign(estado, { respuesta: 'Sí', adultos: datos.adultos, ninos: datos.ninos, aporte: datos.aporte });
+                pintarInvitacion();
+                pintarGracias();
+                mostrar('gracias', 'replace'); // "atrás" desde aquí vuelve a la invitación, no al formulario
+            } catch (err) {
+                $('#error-envio').textContent = mensajeError(err);
+                $('#error-envio').hidden = false;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Enviar confirmación';
+            }
+        });
+
+        // ---------- Inicio ----------
+        $$('[data-mapa]').forEach((a) => { a.href = MAPS_URL; });
+        $('#btn-calendario').href = urlCalendario();
+        crearGuirnalda();
+        crearNieve();
+        cargar();
+    })();
+</script>
+</body>
+</html>

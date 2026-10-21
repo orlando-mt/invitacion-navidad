@@ -1,0 +1,52 @@
+name: Destruir invitación
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar:
+        description: 'Escribe "destruir" para borrar el bucket y CloudFront'
+        required: true
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: invitacion-navidad-prod
+  cancel-in-progress: false
+
+env:
+  TF_VERSION: "1.16.6"
+  TF_DIR: infra/envs/prod
+  TF_IN_AUTOMATION: "true"
+
+jobs:
+  destroy:
+    name: Terraform destroy
+    runs-on: ubuntu-latest
+    if: ${{ inputs.confirmar == 'destruir' && github.ref == 'refs/heads/main' }}
+    defaults:
+      run:
+        working-directory: ${{ env.TF_DIR }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Credenciales AWS (OIDC)
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Instalar Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - name: Init
+        run: terraform init -input=false
+
+      - name: Destroy
+        run: terraform destroy -input=false -auto-approve
