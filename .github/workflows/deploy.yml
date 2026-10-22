@@ -1,12 +1,6 @@
 name: Deploy invitación
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "infra/**"
-      - "site/**"
-      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:

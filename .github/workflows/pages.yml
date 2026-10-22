@@ -1,0 +1,71 @@
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Construir tarjeta
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Configurar Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Construir (inyectar configuración)
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          APPS_SCRIPT_URL: ${{ vars.APPS_SCRIPT_URL }}
+        run: |
+          [[ "$APPS_SCRIPT_URL" == https://script.google.com/* ]] || { echo "::error::Falta APPS_SCRIPT_URL (URL /exec de Apps Script)"; exit 1; }
+          rm -rf dist && cp -r site dist
+          SITE_URL="${SITE_URL%/}"
+          sed -i "s|__APPS_SCRIPT_URL__|${APPS_SCRIPT_URL}|g; s|__SITE_URL__|${SITE_URL}|g" dist/index.html
+          if grep -nE "__(APPS_SCRIPT_URL|SITE_URL)__" dist/index.html; then
+            echo "::error::Quedaron placeholders sin reemplazar"; exit 1
+          fi
+          echo "SITE_URL=${SITE_URL}" >> "$GITHUB_ENV"
+
+      - name: Subir artefacto
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Resumen
+        run: |
+          {
+            echo "### 🎄 Invitación publicada"
+            echo "- URL base: ${SITE_URL}/"
+            echo "- Link de un invitado: \`${SITE_URL}/?t=TOKEN\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    name: Desplegar
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
